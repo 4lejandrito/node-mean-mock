@@ -1,8 +1,10 @@
 {
-    "name": "mocker",
+    "name": "mock-js",
     "description": "Web App Mock Utility",
+    "author": "4lejandrito",
     "version": "0.0.1",
-    "private": true,
+    "private": false,
+    "main": "./src/mapper",
     "engines": {
         "node": "0.10.21"
     },
