@@ -1,0 +1,23 @@
+{
+    "name": "mocker",
+    "description": "Web App Mock Utility",
+    "version": "0.0.1",
+    "private": true,
+    "engines": {
+        "node": "0.10.21"
+    },
+    "dependencies": {
+        "rekuire": "*",
+        "express": "*",
+        "mongoose": "*",
+        "mocha": "*",
+        "chai": "*",
+        "node-rest-client": "*",
+        "request": "*",
+        "async": "*",
+        "underscore": "*"
+    },
+    "scripts": {        
+        "test": "export NODE_ENV=test && mocha -R spec --recursive"
+    }
+}
