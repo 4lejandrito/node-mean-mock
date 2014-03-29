@@ -4,7 +4,7 @@
     "author": "4lejandrito",
     "repository" : {
         "type" : "git",
-        "url" : "http://github.com/4lejandrito/node-web-mock.git"
+        "url" : "http://github.com/4lejandrito/node-mean-mock.git"
     },
     "version": "1.0.0",
     "private": false,
