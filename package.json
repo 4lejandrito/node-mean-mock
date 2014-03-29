@@ -2,7 +2,11 @@
     "name": "web-mock",
     "description": "Web App Mock Utility",
     "author": "4lejandrito",
-    "version": "0.0.1",
+    "repository" : {
+        "type" : "git",
+        "url" : "http://github.com/4lejandrito/node-web-mock.git"
+    },
+    "version": "1.0.0",
     "private": false,
     "main": "./src/mapper",
     "engines": {
