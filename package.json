@@ -6,7 +6,7 @@
         "type" : "git",
         "url" : "http://github.com/4lejandrito/node-mean-mock.git"
     },
-    "version": "1.0.1",
+    "version": "1.0.2",
     "private": false,
     "main": "./src/mapper",
     "engines": {
@@ -18,12 +18,14 @@
         "mongoose": "*",
         "mocha": "*",
         "chai": "*",
+        "istanbul": "*",
         "node-rest-client": "*",
         "request": "*",
         "async": "*",
         "underscore": "*"
     },
     "scripts": {        
-        "test": "export NODE_ENV=test && mocha -R spec --recursive"
+        "test": "export NODE_ENV=test && mocha -R spec --recursive",
+        "coverage": "export NODE_ENV=test && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec --recursive"
     }
 }
