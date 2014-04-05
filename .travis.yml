@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- 0.10.21
+services: mongodb
+deploy:
+  provider: npm
+  api_key:
+    secure: dHGpWIHd5BY7U/18WDQh4fmiUIG8IijNjsbpZHeaTKH4h3x1Lykuv1skchtawUNmAFmlZYJKzzJZoIZvXrpwkYMl9QY6e4qfhWMkLxJ15kKrfaC4bs6m81zrrqf16u8bkf9M50jKU1qN8mHyL7NH3b5/orGu5HbhxNSI2Bcb/ZY=
