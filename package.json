@@ -19,6 +19,7 @@
         "mocha": "*",
         "chai": "*",
         "istanbul": "*",
+        "mocha-lcov-reporter": "*",
         "coveralls": "*",
         "node-rest-client": "*",
         "request": "*",
