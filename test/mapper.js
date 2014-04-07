@@ -1,6 +1,7 @@
 var rekuire = require('rekuire');
 var expect = rekuire('chai').expect;
 var rest = rekuire('src/util/rest');
+var express = rekuire('express');
 var mapper = rekuire('src/mapper');
 
 describe("Mappper", function () {   
@@ -76,6 +77,27 @@ describe("Mappper", function () {
                 expect(response.statusCode).to.equal(404);
                 expect(data).to.equal('unknown mapping');
                 mapper.stop(done);
+            });
+        });           
+    });
+
+    it("should be applied to an existing express application", function (done) {        
+        var mappings = {
+            '/test': {
+                headers: {'test-header': 'test'},
+                data: 'Hello world'
+            }
+        }
+        var app = express();
+
+        mapper.apply(app, mappings);
+
+        var server = app.listen(8080, function() {
+            rest.get('http://localhost:8080/test', function(data, response) {
+                expect(response.statusCode).to.equal(200);
+                expect(response.headers).to.have.property('test-header').and.equal('test');
+                expect(data).to.equal('Hello world');
+                server.close(done);
             });
         });           
     });

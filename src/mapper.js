@@ -2,12 +2,10 @@ var express = require('express');
 
 module.exports = {
 
-    start: function(port, mappings, cb) {
-        var mapper = express();
-
+    apply: function(app, mappings) {
         for (var key in mappings) {
             (function(path) {
-                mapper.get(path, function(req, res) {
+                app.get(path, function(req, res) {
                     for (var header in mappings[path].headers) {
                         res.setHeader(header, mappings[path].headers[header]);
                     }
@@ -16,11 +14,17 @@ module.exports = {
             })(key);
         }
 
-        mapper.all('*', function(req, res) {
+        app.all('*', function(req, res) {
             res.send(404, 'unknown mapping');
-        });
+        });        
+    },
 
-        this.server = mapper.listen(port);
+    start: function(port, mappings, cb) {
+        var app = express();
+        
+        this.apply(app, mappings);
+
+        this.server = app.listen(port);
 
         this.server.on('listening', cb);
     },

@@ -6,7 +6,7 @@
         "type" : "git",
         "url" : "http://github.com/4lejandrito/node-mean-mock.git"
     },
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": false,
     "main": "./src/mapper",
     "engines": {
