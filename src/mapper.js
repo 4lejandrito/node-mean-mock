@@ -12,17 +12,17 @@ module.exports = {
                     res.send(mappings[path].data);
                 });
             })(key);
-        }
-
-        app.all('*', function(req, res) {
-            res.send(404, 'unknown mapping');
-        });        
+        } 
     },
 
     start: function(port, mappings, cb) {
         var app = express();
         
         this.apply(app, mappings);
+
+        app.all('*', function(req, res) {
+            res.send(404, 'unknown mapping');
+        });
 
         this.server = app.listen(port);
 
