@@ -5,7 +5,7 @@ module.exports = {
     apply: function(app, mappings) {
         for (var key in mappings) {
             (function(path) {
-                app.get(path, function(req, res) {
+                app.all(path, function(req, res) {
                     for (var header in mappings[path].headers) {
                         res.setHeader(header, mappings[path].headers[header]);
                     }

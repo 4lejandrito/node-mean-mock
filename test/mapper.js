@@ -101,4 +101,38 @@ describe("Mappper", function () {
             });
         });           
     });
+
+    it("should map an HTTP POST with a string and headers", function (done) {
+        var mappings = {
+            '/test': {
+                headers: {'test-header': 'test'},
+                data: 'Hello world'
+            }
+        }
+        mapper.start(8080, mappings, function() {
+            rest.post('http://localhost:8080/test', function(data, response) {
+                expect(response.statusCode).to.equal(200);
+                expect(response.headers).to.have.property('test-header').and.equal('test');
+                expect(data).to.equal('Hello world');
+                mapper.stop(done);
+            });
+        });           
+    });
+
+    it("should map an HTTP DELETE with a string and headers", function (done) {
+        var mappings = {
+            '/test': {
+                headers: {'test-header': 'test'},
+                data: 'Hello world'
+            }
+        }
+        mapper.start(8080, mappings, function() {
+            rest.delete('http://localhost:8080/test', function(data, response) {
+                expect(response.statusCode).to.equal(200);
+                expect(response.headers).to.have.property('test-header').and.equal('test');
+                expect(data).to.equal('Hello world');
+                mapper.stop(done);
+            });
+        });           
+    });
 });    
