@@ -2,21 +2,26 @@ var rekuire = require('rekuire');
 var expect = rekuire('chai').expect;
 var rest = rekuire('src/util/rest');
 var express = rekuire('express');
-var db = rekuire('src/db');
+var mockdb = rekuire('src/db');
 var MongoClient = require('mongodb').MongoClient
 
-describe("DB", function () {   
+describe("DB", function () {
 
-    before(function(done) {
-        MongoClient.connect('mongodb://localhost/node-mean-test', done);
-    });
+    var uri = 'mongodb://localhost/node-mean-test';
 
-    it("should do something", function (done) {
+    it("should insert a collection when started", function (done) {
         var data = {
-            collection: [{}, {}]
+            collection: [{test: 1}, {test: 2}]
         }
-        db.start(data, function() {
-            mapper.stop(done);
-        });           
+        mockdb.start(uri, data, function() {
+            MongoClient.connect(uri, function(err, db) {
+                db.collection('collection').find().toArray(function(err, items) {
+                    expect(items).to.have.length(2);
+                    expect(items[0]).to.have.property('test').and.equal(1);
+                    expect(items[1]).to.have.property('test').and.equal(2);
+                    mockdb.stop(done);
+                });
+            });
+        });
     });
-});    
+});
