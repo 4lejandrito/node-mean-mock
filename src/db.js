@@ -5,7 +5,7 @@ var async = require('async');
 module.exports = {
 
     start: function(uri, collections, cb) {
-        MongoClient.connect('mongodb://localhost/node-mean-test', function(err, db) {
+        MongoClient.connect(uri, function(err, db) {
             var functions = [];
             for (var name in collections) {
                 functions.push(function(cb) {
