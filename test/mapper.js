@@ -1,8 +1,8 @@
 var rekuire = require('rekuire');
 var expect = rekuire('chai').expect;
-var rest = rekuire('src/util/rest');
+var rest = rekuire('test/util/rest');
 var express = rekuire('express');
-var mapper = rekuire('src/mapper');
+var mapper = rekuire('src/mock').mapper;
 
 describe("Mappper", function () {   
 

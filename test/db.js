@@ -1,6 +1,6 @@
 var rekuire = require('rekuire');
 var expect = rekuire('chai').expect;
-var mockdb = rekuire('src/db');
+var mockdb = rekuire('src/mock').db;
 var MongoClient = require('mongodb').MongoClient;
 
 describe("DB", function () {
