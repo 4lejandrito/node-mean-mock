@@ -28,7 +28,7 @@ describe("DB", function () {
             collection: [{test: 1}, {test: 2}]
         }
         MongoClient.connect(uri, function(err, db) {
-            mockdb.start(db, data, function() {
+            mockdb.apply(db, data, function() {
                 db.collection('collection').find().toArray(function(err, items) {
                     expect(items).to.have.length(2);
                     expect(items[0]).to.have.property('test').and.equal(1);
