@@ -6,7 +6,7 @@
         "type" : "git",
         "url" : "http://github.com/4lejandrito/node-mean-mock.git"
     },
-    "version": "1.1.1",
+    "version": "1.1.2",
     "private": false,
     "main": "./src/mock",
     "engines": {

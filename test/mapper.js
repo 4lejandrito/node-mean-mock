@@ -135,4 +135,18 @@ describe("Mappper", function () {
             });
         });           
     });
+
+    it("should work with undefined mappings", function (done) {
+        var mappings;
+        mapper.start(8080, mappings, function() {
+            mapper.stop(done);
+        });
+    });
+
+    it("should work with empty mappings", function (done) {
+        var mappings = {};
+        mapper.start(8080, mappings, function() {
+            mapper.stop(done);
+        });           
+    });
 });    

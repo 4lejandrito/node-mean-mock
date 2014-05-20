@@ -9,7 +9,8 @@ describe("DB", function () {
 
     it("should insert a collection when started", function (done) {
         var data = {
-            collection: [{test: 1}, {test: 2}]
+            collection: [{test: 1}, {test: 2}],
+            collection2: [{test: 1}, {test: 2}]
         }
         mockdb.start(uri, data, function() {
             MongoClient.connect(uri, function(err, db) {
@@ -25,7 +26,8 @@ describe("DB", function () {
 
     it("should also work when passed an existing mongo db object", function (done) {
         var data = {
-            collection: [{test: 1}, {test: 2}]
+            collection: [{test: 1}, {test: 2}],
+            collection2: [{test: 1}, {test: 2}]
         }
         MongoClient.connect(uri, function(err, db) {
             mockdb.apply(db, data, function() {

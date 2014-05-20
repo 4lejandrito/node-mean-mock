@@ -8,13 +8,15 @@ module.exports = {
     apply: function(db, collections, cb) {
         var functions = [];
         for (var name in collections) {
-            functions.push(function(cb) {
-               db.collection(name, function(err, collection) {
-                    collection.remove({}, function() {
-                        collection.insert(collections[name], cb);
+            (function(name) {
+                functions.push(function(cb) {
+                    db.collection(name, function(err, collection) {
+                        collection.remove({}, function() {
+                            collection.insert(collections[name], cb);
+                        });
                     });
                 });
-            });
+            })(name);
         }
         async.parallel(functions, cb);
     },
